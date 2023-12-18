@@ -1,3 +1,5 @@
+import { Stack } from "./types";
+
 /**
  * 利用数组实现栈结构
  * 栈结构是一个受限的线性结构
@@ -8,19 +10,19 @@
  * 4. isEmpty 如果栈内没有任何元素则返回true 否则返回false
  * 5. size 返回栈内的元素个数,也就是栈的长度与数组的length方法类似
  */
-class ArrayStack {
-  data: any[] = [];
-  constructor(data: any[] = []) {
+class ArrayStack<T = any> implements Stack<T> {
+  private data: T[] = [];
+  constructor(data: T[] = []) {
     this.data = data;
   }
-  push(element: any) {
+  push(element: T) {
     this.data.push(element);
   }
   pop() {
-    return this.data.pop() ?? null;
+    return this.data.pop();
   }
   peek() {
-    return this.data[this.data.length - 1] ?? null;
+    return this.data[this.data.length - 1];
   }
   isEmpty() {
     return !!this.size();
